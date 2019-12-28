@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="website.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+<!--
+.style1 {
+	font-size: large;
+	font-weight: bold;
+	color: #0000FF;
+}
+.style2 {
+	color: #000000;
+	font-size: medium;
+	font-weight: bold;
+}
+.style3 {font-size: small}
+-->
+</style>
+</head>
+
+<body>
+<div id="stronaCI">
+<p><span class="style1">Determining the time of taking a photograph<br />
+  by measuring shadow lengths in the photograph</span></p>
+<p>The idea comes from this work [1]. The drawing below illustrates the relationship between the sun elevation, the object height and the shadow length.</p>
+<p align="center"><a href="crime/froon_kremers/photos/shadow.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/shadow.jpg" width="420" height="300"  /></a></p>
+<p>The formula<br />
+  e = atan(H/L) &nbsp;&nbsp;(1)<br />
+  is used to determine the sun's elevation.<br />
+  e - the sun's elevation,<br />
+  H - an object's height, L - the length of the shadow.<br />
+  atan is the inverse of the tangent function.</p>
+<p>Knowing the sun's elevation, we can determine the time of the day when a photo was taken.</p>
+<p>The following methods can be used to determine the time of taking a photo:</p>
+<p><B>Method 1</B><br />
+  The method uses a modified spreadsheet downloaded from <a href="https://www.esrl.noaa.gov/gmd/grad/solcalc/calcdetails.html" target="_blank">this website</a>.<br />
+  These are two versions of the spreadsheet:<br/>
+  <a href="crime/froon_kremers/NOAA_Solar_Calculations_day_shadow.ods" target="_blank">NOAA_Solar_Calculations_day_shadow.ods OpenOffice.org Calc</a><br />
+  <a href="crime/froon_kremers/NOAA_Solar_Calculations_day_shadow.xls" target="_blank">NOAA_Solar_Calculations_day_shadow.ods MS Excel</a></p>
+<p>The modified spreadsheet calculates the time of taking a photo when input data are set properly.<br/>
+ How to use the spreadsheet?</p>
+<p>1. Measure the height of an object in the photograph. Measure the shadow cast by the object. The measured values can be in pixels, centimeters, inches or millimeters. Both values (the object's height and the shadow length) must be in the same unit.<br />
+  Here is an example of a photo where an object height H and the length of the cast shadow L are denoted.</p>
+  <p><a href="crime/froon_kremers/photos/photo2.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/photo2.jpg" width="684" height="384"  /></a></p>
+  <p>2. Open the spreadsheet. Set latitude, longitude of the place in the photo.<br />
+  Set the time zone. Remember to add 1 to the number of time zone if DST is in effect.<br />
+  DST means Daylight Saving Time (called summer time as well).<br />
+  Set the date. Set the height (cell B49 in the spreadsheet) measured in point 1.<br />
+  Set the measured shadow length (cell B50 in the spreadsheet).<br />
+  The cells C73 and C75 will show the calculated times of taking the photo.<br />
+  Now you have 2 times of the day for the input data. How to choose between the two times? One of the method is to analyse direction of the cast shadow in the photograph. The example of such an analysis is <a href="photo2.html" target="_blank">here</a>.<br/>
+  3. The sun declination and EOT (Equation of Time) are taken for the time 12:00. If you want to use those parameters for a different time, you must change the content of cell B51 (by default set to =T121) and B52 (by default set to =T121). For example, if you want to use declination and EOT for 10:00, you must set cell B51 to =T101 and cell B52 to =V101.</p>
+  <p>A detailed description of my modifications of the NOAA spreadsheet is <a href="method1.html" target="_blank">here</a>.</p>
+<p><B>Method 2</B><br />
+  Minimum mathematical formulas. The rest of mathematics is hidden on <a href="https://www.esrl.noaa.gov/gmd/grad/solcalc" target="_blank">the NOAA Solar Calculator website</a> and <a href="https://www.sunearthtools.com/dp/tools/pos_sun.php?lang=en" target="_blank">the sunearthtools website</a>.</p>
+<p>1. Measure the height of an object in the photograph. Measure the shadow cast by the object. The measured values can be in pixels, centimeters, inches or millimeters. Both values (the object's height and the shadow length) must be in the same unit.<br />
+  2. Go to <a href="https://www.sunearthtools.com/dp/tools/pos_sun.php?lang=en" target="_blank">the sunearthtools website</a>.<br />
+  3. Insert proper geographic coordinates of the place in the examined photograph (latitude, longitude).<br />
+  Set the proper date. Set the time zone. Check or uncheck DST.<br />
+  DST means Daylight Saving Time (called summer time as well). <br />
+  Click the Execute button.<br />
+  For example in our demonstration photo<br />
+  latitude=8.812407 longitude=-82.425636<br />
+  Time Zone=-5<br />
+  date=2014.04.01. (April 1st 2014)<br />
+  Our example relates to Panama. There is no DST in Panama.<br />
+  The place you have in the photograph should be displayed on the map on the website.<br />
+  Under the map there is a table of the sun's elevations and azimuths for the given day. You will need the table with 5 minutes accuracy.<br />
+  Set step to 5 minutes in the field above the table. Click the execute button above the table (not the one above the map).<br />
+  Now you have the table of the sun's elevations and azimuths for the given day with 5 minutes accuracy. You can print the table or save it to a pdf file. (see <a href="crime/froon_kremers/el_pianista_photo1_2014_04_01_12_00.pdf" target="_blank">el_pianista_photo1_2014_04_01_12_00.pdf</a>; the table is on pages 3-5)<br />
+  4. Open the spreadsheet <a href="crime/froon_kremers/Shadow.xls" target="_blank">Shadow.xls</a>.<br />
+  The spreadsheet contains four cells. Cell B1 (an object's height) and B2 (the length of the shadow) are input values. Cell B3 (the sun's elevation) is based on formula (1) (see above). Cell B4 converts the sun's elevation from radians to degrees.<br/>
+  Insert measured values in the proper fields of the spreadsheet.<br />
+  For example height=162, shadow length=51<br />
+  Click on cell B3. Now cell B4 should display the measured sun's elevation in degrees. In our example cell B4 should display the value 72.525226.<br />
+  5. Check in the table from sunearthtools (point 2) what time corresponds to the elevation determined in point 4.<br />
+  In our example the are two ranges of time<br />
+  11:25 - 11:30 (elevations 72.49 - 73.7)<br />
+  13:40 - 13:45 (elevations 71.8 - 73)<br />
+  6. Go to <a href="https://www.esrl.noaa.gov/gmd/grad/solcalc" target="_blank">the NOAA Solar Calculator</a>.
+  Insert geographic coordinates of the place (latitude, longitude), time zone. Check or uncheck DST. Set the proper date.<br />
+  7. Set the time so that the elevation in results will display the value 72.53.<br />
+  (The elevation is the right field under the Az/El label on the right side of results).<br />
+  From point 5 you know that the time is between 11:25 and 11:30 (the first range).<br />
+  Set properly hours, minutes and seconds to obtain the value 72.53 in the elevation field. This is a method by trial and error, but the hour you know. For minutes there are maximum 5-6 values to set. A little more work should be with seconds.<br />
+  In this way you can determine that the first time is 11:25:05.<br />
+  Using the second range of time (13:40 - 13:45) you can determine the second time. In our example it is 13:41:56.<br />
+  Remember that every time you change the time (the hour, minute, second) you should click another field on the website so that the changed time will be reflected in results. There is no execute button on this website as on the sunearthtools website.<br />
+  Now you have 2 times of the day when the elevation was 72.53.<br />
+  How to choose between the two times? One of the method is to analyse direction of the cast shadow in the photograph. The example of such an analysis is <a href="photo2.html" target="_blank">here</a>.</p>
+<p><B>Method 3</B><br />
+  A computer program that computes the time of taking a photograph from lengths of shadows.<br />
+  <a href="https://github.com/AndrzejBystrzycki/SolarAstronomy/tree/master/src/sunastronomy/BasicSolarShadow.java" target="_blank">BasicSolarShadow.java</a><br/>
+  <a href="https://github.com/AndrzejBystrzycki/SolarAstronomy/tree/master/src/sunastronomy/BasicSolarCalculator.java" target="_blank">BasicSolarCalculator.java</a><br/>
+  The program is based on the calculations described in [2]. The program gives very similar results to the results obtained by means of method 1.<br />
+</p>
+<p><B>References</B></p>
+<p>[1] Frode Eika Sandnes "Determining the Geographical Location of Image Scenes based on Object Shadow Lengths"<br/> <a href="https://www.researchgate.net/publication/220541439_Determining_the_Geographical_Location_of_Image_Scenes_based_on_Object_Shadow_Lengths" target="_blank">https://www.researchgate.net/publication/220541439_Determining_the_Geographical_Location_of_Image_Scenes_based_on_Object_Shadow_Lengths</a><br />
+  accessed 28.06.2019.</p>
+<p>[2] Kevin Karney "Basic Solar Positional Astronomy"<br />
+<a href="http://www.precisedirections.co.uk/Sundials/Basic%20Solar%20Positional%20Astronomy.pdf" target="_blank">http://www.precisedirections.co.uk/Sundials/Basic%20Solar%20Positional%20Astronomy.pdf</a><br />
+  accessed 28.08.2019.</p>
+<p>[3] Simon Wheaton-Smith "Illustrating Time’s Shadow"<br />
+<a href="http://www.illustratingshadows.com/mainBook.pdf" target="_blank">http://www.illustratingshadows.com/mainBook.pdf</a><br />
+  accessed 4.09.2019<br />
+</p>
+<p><br />
+</div>
+<div id="stronaP"></div>
+</body>
+</html>
