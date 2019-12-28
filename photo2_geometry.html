@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="website.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+<!--
+.style1 {
+	font-size: large;
+	font-weight: bold;
+	color: #0000FF;
+}
+.style2 {
+	color: #000000;
+	font-size: medium;
+	font-weight: bold;
+}
+.style3 {font-size: small}
+-->
+</style>
+</head>
+
+<body>
+<div id="stronaCI">
+<p><span class="style1">Photo 2 - geometry of a shadow </span></p>
+<p>A photo of Kris on the bridge on the El Pianista trail. This is an experimental method. The idea is based on the analysis of the geometry of the shadow in photo 2.</p>
+<p>The time of taking photo 2 obtained with this method is 11:08:06.</p>
+<p><a href="crime/froon_kremers/photos/photo2.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/photo2.jpg" width="684" height="384"  /></a></p>
+<p>Below you can see a more abstract picture of the scene in photo 2.</p>
+<p align="center"><a href="crime/froon_kremers/photos/bridge_shadow_geometry1.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/bridge_shadow_geometry1.jpg" width="420" height="300"  /></a></p>
+	  <p>The drawing below shows the geometry of the shadow cast on the bridge by the barrier. It's a view of the bridge from overhead.</p>
+      <p align="center"><a href="crime/froon_kremers/photos/bridge_shadow_geometry.jpg" target="_blank"><img src="crime/froon_kremers/photos/bridge_shadow_geometry.jpg" width="420" height="300" /></a></p>
+<p>the red segment BC - the shadow length measured <a href="photo2.html" target="_blank">here</a> (denoted as L)<br/>
+the green segment AC - the real shadow cast by the point on the barrier <br/>
+the black segment DE - the barrier <br/>
+the yellow segment CF - sun's azimuth<br/>
+the blue segment NS - the north-south direction <br/>
+<br/>
+H - object height (the height of the barrier)<br/>
+<br/>
+segment BC = L <br/>
+<br/>
+angle NCF = sun's azimuth <br/>
+angle NCE = the azimuth of the barrier (the azimuth of the bridge) <br/>
+<br/>
+e - sun's elevation <br/>
+<br/>
+tan(e) = H/AC (1) (see formula (8) in [1])<br/>
+and <br/>
+AC = H/tan(e) (2) <br/>
+<br/>
+triangle ABC - a right triangle <br/>
+<br/>
+From definition of sine <br/>
+BC/AC = sin(BAC) (3) <br/>
+<br/>
+Some relations between angles <br/>
+BAC = ACD = ECF = NCE - NCF (4) <br/>
+<br/>
+From (3) and (4) we have <br/>
+BC/AC = sin(NCE - NCF) (5) <br/>
+and <br/>
+BC = AC * sin(NCE - NCF) (6) <br/>
+<br/>
+From (2) and (6) we have <br/>
+BC = H/tan(e) * sin(NCE - NCF) (7) <br/>
+<br/>
+The segment BC was measured (the segment denoted L in photo 2). The value H was measured too. The angle NCE can be measured on the map (the azimuth of the barrier on the bridge, see below). We have to determine such e and NCF that satisfy equation (7). In other words, we have to find sun's elevation and azimuth that satisfy equation (7).</p>
+<p>The following map enables us to determine the azimuth of the bridge:</p>
+<p><a href="crime/froon_kremers/photos/el_pianista_bridge_azimuth.JPG" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_bridge_azimuth.JPG" width="640" height="400"  /></a></p>
+<p>It is a screen cast of the map on this <a href="https://pl.wikiloc.com/szlaki-wycieczki-piesze/el-pianista-23576682" target="_blank">site</a>. I added the black line (segment) so that the azimuth of the bridge would be clearly visible. Using GIMP I measured the lengths of sides of the rectangle determined by the black segment:<br/>X = 41, Y = 78 (in pixels).</p>
+<p>The value of the azimuth of the bridge is determined by the following formula:<br/>
+Azb = 90 + atan(78.0/41.0) = 152.27 deg.</p>
+<p>First we need some helper function. Below is an algorithm of the function that calculates the time of a day when sun's azimuth is equal to the given azimuth. The while loop traverses from TimeOfSunrise to TimeOfSunset. The hour in the while loop changes by 1 second. That hour is chosen at which the difference between the given azimuth and the calculated azimuth is the smallest.</p>
+<p>double calculateTimeUsingAzimuth(Year, Month, Day, Latitude, Longitude, TimeZone, DST, GivenAzimuth, GregorianCalendar[] Sunriseset)<br/>
+begin<br/>
+&nbsp;TimeOfSunrise = Sunriseset[0]<br/>
+&nbsp;TimeOfSunset = Sunriseset[2]<br/>
+&nbsp;hours = TimeOfSunrise<br/>
+&nbsp;while hours <= TimeOfSunset<br/>
+&nbsp;begin<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;elevation, azimuth = calculateSunPosition(Date(hours), Latitude, Longitude, TimeZone, DST)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;if difference > abs(azimuth  - GivenAzimuth) then<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;begin<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;difference = abs(azimuth  - GivenAzimuth)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HoursFound = hours<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ElevationFound = elevation<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AzimuthFound = azimuth<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;end<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;hours = hours + 1 sec<br/>
+end<br/></p>
+<p>Here is an implementation of the above algorithm: the calculateTimeUsingAzimuthSunriseset method in the following class <a href="https://github.com/AndrzejBystrzycki/SolarAstronomy/tree/master/src/sunastronomy/BasicSolarShadow.java" target="_blank">BasicSolarShadow.java</a>.   <a href="https://github.com/AndrzejBystrzycki/SolarAstronomy" target="_blank">(The whole project.)</a><br/>
+</p>
+<p>Here is an algorithm that determines the time of taking photo 2. The algorithm is based on formula (7). The while loop traverses from HoursForAzimuth to the time of sunrise. The hour in the loop is decreased by 1 second. In each pass of the loop sun's elevation and azimuth are calculated and then the length of the shadow (formula (7)). That hour is chosen at which the difference between the given shadow length and the calculated shadow length is the smallest.</p>
+<p>BC - the measured shadow length</p>
+<p>// Calculate the time of sunrise, solar noon (transit), sunset<br/>
+// SPA algorithm is used (implemented in Java by Klaus Brunner)<br/>
+GregorianCalendar[] SunriseTransitSet = calculateSunriseTransitSet(Date, Latitude, Longitude, DeltaT)<br/>
+// Calculate the hour when sun's azimuth is equal to the azimuth of the barrier<br/>
+// The helper function described above is used<br/>
+HoursForAzimuth = calculateTimeUsingAzimuthSunriseset(Year, Month, Day, Latitude, Longitude, TimeZone, DST, Azb, SunriseTransitSet)<br/>
+TimeOfSunrise = SunriseTransitSet[0]<br/>
+hours = HoursForAzimuth<br/>
+while hours >= TimeOfSunrise<br/>
+begin<br/>
+&nbsp;&nbsp;&nbsp;elevation, azimuth = calculateSunPosition(Date(hours), Latitude, Longitude, TimeZone, DST)<br/>
+&nbsp;&nbsp;&nbsp;slength = H/tan(elevation) * sin(Azb - azimuth)<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;if difference > abs(slength  - BC) then<br/>
+&nbsp;&nbsp;&nbsp;begin<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;difference = abs(slength  - BC)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HoursFound = hours<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ShadowLenFound = slength<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ElevationFound = elevation<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AzimuthFound = azimuth<br/>
+&nbsp;&nbsp;&nbsp;end<br/>
+&nbsp;&nbsp;&nbsp;hours = hours - 1 sec<br/>
+end<br/></p>
+<p>An implementation of the above algorithm: <a href="https://github.com/AndrzejBystrzycki/SolarAstronomy/tree/master/src/shadow/BarrierShadowGeometry.java" target="_blank">BarrierShadowGeometry.java</a>.   <a href="https://github.com/AndrzejBystrzycki/SolarAstronomy" target="_blank"> (The whole project.)</a><br/>
+</p>
+<p>Results obtained in case of photo 2:<br/>
+HoursFound -> time = 11:08:06<br/>
+ShadowLenFound=51.0049<br/>
+AzimuthFound =99.61 deg.<br/>
+AC=64.15 // from formula (6)<br/>
+ElevationFound=68.4 deg.</p>
+<p>The time of taking photo 2 with this method is 11:08:06.</p>
+<p><B>References</B></p>
+<p>[1] Frode Eika Sandnes "Determining the Geographical Location of Image Scenes based on Object Shadow Lengths"<br/> <a href="https://www.researchgate.net/publication/220541439_Determining_the_Geographical_Location_of_Image_Scenes_based_on_Object_Shadow_Lengths" target="_blank">https://www.researchgate.net/publication/220541439_Determining_the_Geographical_Location_of_Image_Scenes_based_on_Object_Shadow_Lengths</a><br />
+  accessed 28.06.2019.</p>
+<p>[2] Kevin Karney "Basic Solar Positional Astronomy"<br />
+<a href="http://www.precisedirections.co.uk/Sundials/Basic%20Solar%20Positional%20Astronomy.pdf" target="_blank">http://www.precisedirections.co.uk/Sundials/Basic%20Solar%20Positional%20Astronomy.pdf</a><br />
+  accessed 28.08.2019.</p>
+<p>[3] Simon Wheaton-Smith "Illustrating Time’s Shadow"<br />
+<a href="http://www.illustratingshadows.com/mainBook.pdf" target="_blank">http://www.illustratingshadows.com/mainBook.pdf</a><br />
+  accessed 4.09.2019<br />
+</p>
+<p>[4] Abhik Milan Pal, Subhra Das "Analytical Model for Determining the Sun’s Position at All Time Zones"<br/>
+<a href="http://article.sapub.org/10.5923.j.ijee.20150503.03.html" target="_blank">http://article.sapub.org/10.5923.j.ijee.20150503.03.html</a><br/>
+accessed 29.10.2019.</p>
+<p>[5] Ibrahim Reda, Afshin Andreas "Solar Position Algorithm for Solar Radiation Applications"<br />
+<a href="https://www.nrel.gov/docs/fy08osti/34302.pdf" target="_blank">https://www.nrel.gov/docs/fy08osti/34302.pdf</a><br />
+  accessed 29.10.2019<br />
+</p>
+</div>
+</div>
+<div id="stronaP"></div>
+</body>
+</html>
