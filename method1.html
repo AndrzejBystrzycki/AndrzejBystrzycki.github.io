@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="website.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+<!--
+.style1 {
+	font-size: large;
+	font-weight: bold;
+	color: #0000FF;
+}
+.style2 {
+	color: #000000;
+	font-size: medium;
+	font-weight: bold;
+}
+.style3 {font-size: small}
+-->
+</style>
+</head>
+
+<body>
+<div id="stronaCI">
+<p><span class="style1">The algorithm of method 1</span><br />
+The description of method 1 is <a href="shadows_photos.html" target="_blank">here</a>. Below I present the description of calculations that I added to the NOAA spreadsheet. I did not modify any calculations in the original spreadsheet. I added calculations in cells from A49 to B76 and in cells C73, C75.</p>
+<p>Input data:<br/>
+cell B3 - latitude in degrees<br/>
+cell B4 - longitude in degrees<br/>
+cell B5 - time zone (you need to add 1 if Daylight Saving Time is in effect)<br/>
+cell B7 - date<br/>
+cell B49 - an object's height (let's denote it as Height)<br/>
+cell B50 - the length of the shadow (let's denote it as ShadowLength)</p>
+<p>The calculations:</p>
+<p>Cells B51 and B52 take data from the original spreadsheet.</p>
+<p>Cell B51 - sun's declinations in degrees at a selected time (by default it is 12:00 so the value of the cell is set to =T121)<br/>
+Let's denote it as deltaDeg.</p>
+<p>Cell B52 - EOT (Equation of Time) in minutes at the selected time (by default it is 12:00 so the value of the cell is set to =V121).<br/>
+Let's denote the Equation of Time as EOTmin.</p>
+<p>Cell B53 - latitude in radians<br/>
+Let's denote latitude in radians as fi.<br/>
+fi = radians(latitude)</p>
+<p>Cell B54 - sun's elevation in radians<br/>
+Let's denote sun's elevation in radians as alpha.<br/>
+Formula (8) in [1]<br/>
+alpha = atan(Height / ShadowLength)&nbsp;&nbsp;(1)</p>
+<p>Cell B55 - sun's elevation in degrees<br/>
+alpha deg = degrees(alpha)</p>
+<p>Cell B56 - sun's declination in radians<br/>
+Let's denote sun's declination in radians as delta.<br/>
+delta = radians(deltaDeg)</p>
+<p>Cell B57 - a temporary value<br/>
+Let's denote it as cosHuncorr.<br/>
+From formula (2) in [3] we have<br/>
+cosHuncorr = (sin(alpha) - sin(fi) * sin(delta)) / (cos(fi) * cos(delta))&nbsp;&nbsp;(2)</p>
+<p>Cell B58 - corrected cosH<br/>
+Sometimes it happens that we obtain a value greater than 1 from formula (2). In this case we have to limit it to 1 so that the inverse cosine function will work properly.<br/>
+Let's denote it as cosH.</p>
+<p>Cell B59 - the hour angle in radians<br/>
+Let's denote the hour angle as H1.<br/>
+We have two values of the hour angle that satisfy equation (2). The first is H1, the second is -H1.<br/>
+H1 = acos(cosH)</p>
+<p>Cell B60 - the second hour angle = -H1<br/>
+H2 = -H1</p>
+<p>Cell B61 - the first hour angle in degrees<br/>
+Let's denote it as H1deg.<br/>
+H1deg = degrees(H1)</p>
+<p>Cell B62 - the second hour angle in degrees<br/>
+Let's denote it as H2deg.<br/>
+H2deg = degrees(H2)</p>
+<p>Cell B63 -  the first local solar time<br/>
+Let's denote it as LST1.<br/>
+From formula (5) in [3]<br/>
+LST1 = H1deg / 15 + 12</p>
+<p>Cell B64 -  the second local solar time<br/>
+Let's denote it as LST2.<br/>
+From formula (5) in [3]<br/>
+LST2 = H2deg / 15 + 12</p>
+<p>Cell B65 - a temporary value to keep conformity to my Java program<br/>
+Let's denote it as DeltaGMT.<br/>
+DeltaGMT = time zone</p>
+<p>Cell B66 - correction to local solar time due to the time zone effect<br/>
+Let's denote it as TC1.<br/>
+Formula (7) in [3]<br/>
+TC1 = 4 * (Longitude - 15 * DeltaGMT) (in minutes)</p>
+<p>Cell B67 - a temporary value<br/>
+Let's denote it as sinAz1.<br/>
+Formula in point 57 in the table on page 16 in [2]:<br/>
+sinAz1 = - cos(delta) * sin(H1) / cos(alpha)</p>
+<p>Cell B68 - a temporary value<br/>
+Let's denote it as cosAz.<br/>
+Formula in point 58 in the table on page 16 in [2]:<br/>
+cosAz = ( sin(delta) - sin(alpha) * sin(fi) ) / ( cos(alpha) * cos(fi) )</p>
+<p>Cell B69 - the first azimuth in radians<br/>
+Let's denote it as Az1rad.<br/>
+Formula in point 59 in the table on page 16 in [2]:<br/>
+Az1rad = atan2(cosAz, sinAz1)<br/>
+See also a comment how to use the atan2 function in spreadsheets page 17 in [2].</p>
+<p>Cell B70 - a temporary value<br/>
+Let's denote it as sinAz2.<br/>
+Formula in point 57 in the table on page 16 in [2]:<br/>
+sinAz2 = - cos(delta) * sin(H2) / cos(alpha)</p>
+<p>Cell B71 - the second azimuth in radians<br/>
+Let's denote it as Az2rad.<br/>
+Formula in point 59 in the table on page 16 in [2]:<br/>
+Az2rad = atan2(cosAz, sinAz2)<br/>
+See also a comment how to use the atan2 function in spreadsheets page 17 in [2].</p>
+<p>Cell B72 - the total time correction<br/>
+Let's denote it as TC.<br/>
+Formula (10) in [3]:<br/>
+TC = TC1 + EOTmin</p>
+<p>Cell B73 - the first local time<br/>
+Let's denote it as LT1.<br/>
+From formula (11) in [3]:<br />
+LT1 = LST1 - TC / 60 (in hours)</p>
+<p>Cell B74 - the first azimuth in degrees<br/>
+Azdeg = degrees(Az1rad)<br/>
+Az1deg = mod(Azdeg, 360)<br/>
+See also a comment about the mod function in [2] page 17.</p>
+<p>Cell B75 - the second local time<br/>
+Let's denote it as LT2.<br/>
+From formula (11) in [3]:<br />
+LT2 = LST2 - TC / 60 (in hours)</p>
+<p>Cell B76 - the second azimuth in degrees<br/>
+Azdeg = degrees(Az2rad)<br/>
+Az2deg = mod(Azdeg, 360)<br/>
+See also a comment about the mod function in [2] page 17.</p>
+<p>Cell C73 - the first local time as a fraction of a day<br/>
+The cell displays the time in the familiar format hh:mm:ss</p>
+<p>Cell C75 - the second local time as a fraction of a day<br/>
+The cell displays the time in the familiar format hh:mm:ss</p>
+<p>Cells B74, B76, C73, C75 are output data.</p>
+<p><B>References</B></p>
+<p>[1] Frode Eika Sandnes "Determining the Geographical Location of Image Scenes based on Object Shadow Lengths"<br/> <a href="https://www.researchgate.net/publication/220541439_Determining_the_Geographical_Location_of_Image_Scenes_based_on_Object_Shadow_Lengths" target="_blank">https://www.researchgate.net/publication/220541439_Determining_the_Geographical_Location_of_Image_Scenes_based_on_Object_Shadow_Lengths</a><br />
+  accessed 28.06.2019.</p>
+<p>[2] Kevin Karney "Basic Solar Positional Astronomy"<br />
+<a href="http://www.precisedirections.co.uk/Sundials/Basic%20Solar%20Positional%20Astronomy.pdf" target="_blank">http://www.precisedirections.co.uk/Sundials/Basic%20Solar%20Positional%20Astronomy.pdf</a><br />
+  accessed 28.08.2019.</p>
+<p>[3] Abhik Milan Pal, Subhra Das "Analytical Model for Determining the Sun’s Position at All Time Zones"<br/>
+<a href="http://article.sapub.org/10.5923.j.ijee.20150503.03.html" target="_blank">http://article.sapub.org/10.5923.j.ijee.20150503.03.html</a><br/>
+accessed 29.10.2019.</p>
+</div>
+<div id="stronaP"></div>
+</body>
+</html>

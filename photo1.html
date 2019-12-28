@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="website.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+<!--
+.style1 {
+	font-size: large;
+	font-weight: bold;
+	color: #0000FF;
+}
+.style2 {
+	color: #000000;
+	font-size: medium;
+	font-weight: bold;
+}
+.style3 {font-size: small}
+-->
+</style>
+</head>
+
+<body>
+<div id="stronaCI">
+<p><span class="style1">Photo 1</span></p>
+<p>A selfie of Kris and Lisanne taken on the El Pianista trail.</p>
+<p align="center"><a href="crime/froon_kremers/photos/photo1.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/photo1.jpg" width="458" height="499"  /></a></p>
+<p align="center">Photo 1</p>
+<p>The segments AB and CD were used to determine the time of taking photo 1. I used the Measure Tool in GIMP to measure the height of the object and the length of the cast shadow. In this case the object is abstract: a segment in photo 1.</p>
+<p><a href="crime/froon_kremers/photos/photo1_gimp.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/photo1_gimp.jpg" width="640" height="400"  /></a></p>
+<p align="center">Photo 1-1</p>
+<p>The arrows at the bottom on the left point at the measured values.</p>
+<p>I assumed that the place where photo 1 was taken is the same place where photo 3 was taken. See photos below that justify my assumption (photos from 1-8 to 1-12). See <a href="photo3.html" target="_blank">my analysis of photo 3</a> to check how I determined the coordinates (latitude and longitude) for calculations.</p>
+<p>This is a map of the El Pianista trail with marked places where photos 1, 2, 3 were taken.</p>
+<p><a href="crime/froon_kremers/photos/el_pianista_wikiloc1_123.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_wikiloc1_123.jpg" width="640" height="359"  /></a></p>
+<p align="center">Photo 1-2</p>
+<p>We have the following data needed to calculate the time of taking photo 1:<br/>
+Segment AB:<br/>
+L = 54.0 pixels<br/>
+H = 332.0 pixels<br/>
+date = 2014-04-01 (April 1st 2014)<br/>
+latitude = 8.815315<br/>
+longitude = -82.425166<br/>
+time zone = -5<br/>
+DST = 0 (Daylight Saving Time, there is no DST in Panama)</p>
+<p>The results obtained by means of method 1 (<a href="shadows_photos.html" target="_blank">here</a> is a description of method 1):<br/>
+elevation = 80.76 deg. (cell B55 in the spreadsheet)<br/>
+local time 1 = 13:06:50<br/>
+azimuth 1 = 244.09 deg.<br/>
+local time 2 = 12:00:11<br/>
+azimuth 2 = 115.91 deg.</p>
+<p>For segment CD we have:<br/>
+L = 25.0 pixels<br/>
+H = 432.0 pixels<br/>
+date = 2014-04-01 (April 1st 2014)<br/>
+latitude = 8.815315<br/>
+longitude = -82.425166<br/>
+time zone = -5<br/>
+DST = 0 (Daylight Saving Time, there is no DST in Panama)</p>
+<p>The results obtained by means of method 1 (<a href="shadows_photos.html" target="_blank">here</a> is a description of method 1):<br/>
+elevation = 86.69 deg. (cell B55 in the spreadsheet)<br/>
+cosH = 1.00092<br/>
+cosH corrected = 1.00000<br/>
+local time 1 = 12:33:30<br/>
+azimuth 1 = 180.0 deg.<br/>
+local time 2 = 12:33:30<br/>
+azimuth 2 = 180.0 deg.</p>
+<p>In the case of segment CD we have an ugly thing when the value cosH is greater than 1. In this case it's impossible to determine the hour angle so we must limit cosH to 1. That's why corrected cosH was introduced. This is a technical remark. See the detailed description of calculations in method 1 <a href="method1.html" target="_blank">here</a>.</p>
+<p>For those two segments we obtained 3 different times and 3 azimuths. Now we must analyse the geometry of the scene in photo 1 to choose the time that fits best.
+<p>Version 1: the camera is directed to the west. The blue line indicates the optical axis. That is the line that comes straight out of the camera. The yellow lines indicate our 3 azimuths. From what we see in photo 1 the sun shines from the left side and towards the camera. So in this version the only azimuth that fits that direction is the azimuth for 13:06:50.</p>
+<p><a href="crime/froon_kremers/photos/el_pianista_bend_coor_0.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_bend_coor_0.jpg" width="640" height="359"  /></a></p>
+<p align="center">Photo 1-3</p>
+<p>Version 2: the camera is rotated 45 degrees anticlockwise relative to version 1. The azimuth that fits best the scene in photo 1 is the azimuth for 12:33:30. That is the version which I would choose.</p>
+<p><a href="crime/froon_kremers/photos/el_pianista_bend_coor_45.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_bend_coor_45.jpg" width="640" height="359"  /></a></p>
+<p align="center">Photo 1-4</p>
+<p><a href="https://2.bp.blogspot.com/-NIxGt5t9yHE/VS1wG5BORaI/AAAAAAAACgM/zMQg-oS_XC8/s1600/IMG_6347.JPG
+" target="_blank">Here</a> you can find a photo that justify my choice. That is a very similar view of the mountain. You can see the sloping trees behind the girl on her left side of her head. Compare the sloping trees above Kris's head in photo 1. The optical axis in <a href="https://2.bp.blogspot.com/-NIxGt5t9yHE/VS1wG5BORaI/AAAAAAAACgM/zMQg-oS_XC8/s1600/IMG_6347.JPG
+" target="_blank">the photo of the girl</a> is directed along the track, exactly in the opposite direction to the direction indicated by the red arrow in photo 1-4. Actually there may be a difference between the directions in both photos. The azimuth of the track is about 257 degrees. I assumed that the azimuth of the optical axis of the camera in photo 1 is 225 degrees (the difference is 32 degrees).</p>
+<p>Let's compare photo 1-4 with this photo. That is the position of Lisanne in photo 3. (See <a href="photo3.html" target="_blank">my analysis of photo 3</a>.)</p>
+<p><a href="crime/froon_kremers/photos/el_pianista_bend_photo3.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_bend_photo3.jpg" width="640" height="359"  /></a></p>
+<p align="center">Photo 1-5</p>
+<p>In the case of photo 3 I would choose the time 11:41:39 of taking that photo. Where does the difference come from? The difference is about one hour. Where is the error? That is the same place so it is logical that the times of taking photo 1 and photo 3 should be similar.</p>
+<p>Version 3: the camera is rotated 45 + 19.09 = 64.09 degrees anticlockwise relative to version 1. The azimuth that fits best the scene in photo 1 is the azimuth for 12:33:30. The angle of the rotation was chosen in the way so that the optical axis would be perpendicular to the azimuth for 12:00:11.</p>
+</p>
+<p><a href="crime/froon_kremers/photos/el_pianista_bend_coor_64.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_bend_coor_64.jpg" width="640" height="359"  /></a></p>
+<p align="center">Photo 1-6</p>
+<p>Version 4: the camera is rotated 45 + 19.09 + 5 = 69.09 degrees anticlockwise relative to version 1. We have two azimuths that fit the scene in photo 1: the azimuth for 12:33:30 and the azimuth for 12:00:11. </p>
+<p><a href="crime/froon_kremers/photos/el_pianista_bend_coor_69.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_bend_coor_69.jpg" width="640" height="359"  /></a></p>
+<p align="center">Photo 1-7</p>
+<p>Below I will show some photos justifying my assumption that photo 1 and photo 3 were taken at the same place.</p>
+<p>This is a photo from this <a href="https://www.youtube.com/watch?v=ARU0swxS8AE" target="_blank">film</a> (at 0:44). The photo shows the place where photo 3 (Lisanne on the El Pianista trail) was taken.</p>
+<p><a href="crime/froon_kremers/photos/el_pianista_place_photo3_1.JPG" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_place_photo3_1.JPG" width="640" height="359"  /></a></p>
+<p align="center">Photo 1-8</p>
+<p>The next photo from that film (at 0:50) probably shows the sloping trees which we see in photo 1 (the trees near the cow; compare the trees above Kris's head in photo 1).</p>
+<p><a href="crime/froon_kremers/photos/el_pianista_place_photo1_tree1.JPG" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_place_photo1_tree1.JPG" width="640" height="359"  /></a></p>
+<p align="center">Photo 1-9</p>
+<p>The photo below comes from this <a href="https://www.youtube.com/watch?v=fq0KMJWzb_c" target="_blank">film</a> (at 1:39). It shows the place where photo 3 was taken.</p>
+<p><a href="crime/froon_kremers/photos/el_pianista_bend1.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_bend1.jpg" width="640" height="359"  /></a></p>
+<p align="center">Photo 1-10</p>
+<p>The next photo from that film (at 1:43). </p>
+<p><a href="crime/froon_kremers/photos/el_pianista_bend2.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_bend2.jpg" width="640" height="359"  /></a></p>
+<p align="center">Photo 1-11</p>
+<p>The next photo from that film (at 1:46). This photo shows the view which we see in photo 1: a very similar view of the mountain and the sloping trees on the right side of the photo.</p>
+<p><a href="crime/froon_kremers/photos/el_pianista_bend3.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_bend3.jpg" width="640" height="359"  /></a></p>
+<p align="center">Photo 1-12</p>
+<p>Look at the photo below.</p>
+<p><a href="crime/froon_kremers/photos/el_pianista_distance_bridge_bend.JPG" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_distance_bridge_bend.JPG" width="640" height="359"  /></a></p>
+<p align="center">Photo 1-13</p>
+<p>This is a map showing the distance between the bridge in photo 2 and the place in photo 1. The distance is about 320 m in a straight line. It should take no more than 10 minutes to get from the bridge to the place where photo 1 was taken. My earliest approximation of taking photo 2 is 11:08 (See <a href="photo2_geometry.html" target="_blank">here</a>). So the girls may have reached the place where photo 1 was taken at about 11:18.</p>
+<p>From what we see in photo 1-4 the direction of sunlight should be somewhere between the blue line and the brown line which is perpendicular to the blue line. I chose version 2 of the above versions of possible directions.</p>
+<p>Here are the times and azimuths corresponding to both lines:<br/>
+blue line: azimuth = 225 deg., time = 12:49:54<br/>
+brown line: azimuth = 135 deg., time = 12:17:07<br/>
+Both the above azimuths determine the range of time of taking photo 1: that is between 12:17:07 and 12:49:54. The girls may have come to the place at about 11:18, but the earliest time of taking photo 1 is 12:17:07, according to my estimation. So the question arises: what were they doing such a long time? That is the problem with this photo. Maybe the girls were at the place between 12:17:07 and 12:49:54, but the day before.</p>
+<p>Now look at the photo 4 below. It was taken at the same place as photo 1 and 3. Lisanne is standing almost at the same place as in photo 3. The view in this photo is almost in the opposite direction to the direction in photo 1. Look at the shadows cast by the posts on the right side of the photo. They are directed towards the photographer. The sun in photo 4 shines at the back of Lisanne which is consistent with the shadows cast by the posts. Why does the sun shine at her back in photo 1?</p>
+<p><a href="crime/froon_kremers/photos/photo4.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/photo4.jpg" width="640" height="412"  /></a></p>
+<p align="center">Photo 4.</p>
+<p>There are no cast shadows on the ground in photo 1. We do not have a vertical or horizontal line that could be a reference line. The error made in my calculations of the sun's elevation may be significant in the case of photo 1. However I think there is something wrong when you compare the directions of sunlight in photo 1 and photo 4.</p>
+<p>Of the photos taken on the El Pianista trail photo 1 was presented first in the <a href="https://www.npo3.nl/break-free/07-04-2016/BNN_101378781" target="_blank">Break Free film</a> in April, 2016. It was showed before photo 2. Two things need to be checked: 1) Was photo 1 taken after photo 2? 2) What is the difference between the time of taking photo 1 and other photos taken at the same place (photo 3 and photo 4)?</p>
+<p>Below is another version of photo 1. I downloaded it from this <a href="https://photos.google.com/share/AF1QipOaDcK-zyudR_UXP4xNvvSpKhbEUNHFkl1cvaGaZrvkiKqkgSL0BK5mjUL2SGcDjw?key=UjkzUHpsRmtLNUc2RlphdjVTWHRZSVEySjNYS0NR" target="_blank">photo collection</a>.</p>
+<p align="center"><a href="crime/froon_kremers/photos/photo1_2.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/photo1_2.jpg" width="632" height="843"  /></a></p>
+<p align="center">Photo 1 (2)</p>
+<p>That is probably a better version of photo 1. It is not cut as photo 1 above.</p>
+<p>Let's repeat our calculations in the case of photo 1 (2).<br/>
+Segment AB:<br/>
+L = 37.0 pixels<br/>
+H = 232.0 pixels<br/>
+date = 2014-04-01 (April 1st 2014)<br/>
+latitude = 8.815315<br/>
+longitude = -82.425166<br/>
+time zone = -5<br/>
+DST = 0 (Daylight Saving Time, there is no DST in Panama)</p>
+<p>The results obtained by means of method 1 (<a href="shadows_photos.html" target="_blank">here</a> is a description of method 1):<br/>
+elevation = 80.94 deg. (cell B55 in the spreadsheet)<br/>
+local time 1 = 13:06:02<br/>
+azimuth 1 = 243.51 deg.<br/>
+local time 2 = 12:00:59<br/>
+azimuth 2 = 116.48 deg.</p>
+<p>For segment CD we have:<br/>
+L = 19.0 pixels<br/>
+H = 303.0 pixels<br/>
+date = 2014-04-01 (April 1st 2014)<br/>
+latitude = 8.815315<br/>
+longitude = -82.425166<br/>
+time zone = -5<br/>
+DST = 0 (Daylight Saving Time, there is no DST in Panama)</p>
+<p>The results obtained by means of method 1 (<a href="shadows_photos.html" target="_blank">here</a> is a description of method 1):<br/>
+elevation = 86.41 deg. (cell B55 in the spreadsheet)<br/>
+cosH = 1.00063<br/>
+cosH corrected = 1.00000<br/>
+local time 1 = 12:33:30<br/>
+azimuth 1 = 180.0 deg.<br/>
+local time 2 = 12:33:30<br/>
+azimuth 2 = 180.0 deg.</p>
+<p>The new calculations yield similar results. The difference in time is no more than 1 minute. In the case of segment CD the result is the same.</p>
+<p>What is interesting is that the file which I downloaded is IMG_0482 (1).JPG. That would mean that the number of photo 1 is 482. The time of taking photo is 11:20 (corrected EXIF time).</p>
+<p>Here is another photo which I downloaded from <a href="https://photos.google.com/share/AF1QipOaDcK-zyudR_UXP4xNvvSpKhbEUNHFkl1cvaGaZrvkiKqkgSL0BK5mjUL2SGcDjw?key=UjkzUHpsRmtLNUc2RlphdjVTWHRZSVEySjNYS0NR" target="_blank">the photo collection</a>.</p>
+<p align="center"><a href="crime/froon_kremers/photos/IMG_0485.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/IMG_0485.jpg" width="600" height="449"  /></a></p>
+<p align="center">IMG_0485.jpg</p>
+<p>The corrected EXIF time of taking the photo is 11:25. The view in the photo is the same as in photo 4. According to EXIF time photo 482 and photo 485 were taken at the similar time. However the direction of sunlight indicates that the time is clearly different. The shadows of the posts on the right side of the track are cast along the track in photo 485. The shadow cast by the post on the right side of Lisanne's head is cast approximately perpendicular to the track in photo 482. So we have 2 photos taken approximately at the same time but the directions of sunlight in the photos are incompatible.</p>
+<p>Let's calculate what would be the minimal difference in angles.<br/>
+The position of the sun at 11:20 (corrected EXIF time for photo 482):<br/>
+elevation = 71.29<br/>
+azimuth = 101.54<br/>
+The position of the sun at 12:17:07 (the brown line in photo 1-4, see the comment about the brown line above)<br/>
+elevation = 84.21<br/>
+azimuth = 135.00<br/>
+difference = 135.00 - 101.54 = 33.46.</p>
+<p>Below is a photo illustrating the difference between the angles:</p>
+<p align="center"><a href="crime/froon_kremers/photos/el_pianista_bend_coor1.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_bend_coor1.jpg" width="640" height="359"  /></a></p>
+<p align="center">Photo 1-14</p>
+<p>Is it possible to measure such a difference in two different photos? We must remember that this is a conservative estimation (see the comment below photo 1-4 about the azimuth of the optical axis). If we assume that the azimuth of the optical axis is 235, then the difference is 43.46 degrees.</p>
+<p>Another argument: look at the shadows cast by the posts on the left in photo 1-10. Then look at the girl and her shadow in photo 1-11. The girl is going with her back turned towards the posts in photo 1-10. You can predict the direction of her shadow. That's what we expect when we compare photo 4 and photo 1.</p>
+<p>Maybe taking a test photo exactly in the same direction at 11:20 on April 1st would resolve the problem?</p>
+<p>Below is a photo 1 illustrating the direction at which the optical axis was directed.</p>
+<p align="center"><a href="crime/froon_kremers/photos/IMG_0482 (1)_center.JPG" target="_blank">
+<img src="crime/froon_kremers/photos/IMG_0482 (1)_center.JPG" width="632" height="843"  /></a></p>
+<p align="center">Photo 1 (3)</p>
+</div>
+<div id="stronaP"></div>
+</body>
+</html>
