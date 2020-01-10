@@ -28,33 +28,102 @@
 <p>These are my estimations of some azimuths of directions visible in photos at the Mirador. The idea is to measure the azimuth of the summit visible in photos at the Mirador and determine the horizontal angle of view of Canon PowerShot SX270 HS.</p>
 <p align="center"><a href="crime/froon_kremers/photos/500_directions.jpg" target="_blank">
 <img src="crime/froon_kremers/photos/500_directions.jpg" width="600" height="450"  /></a></p>
-<p align="center">Photo M-1</p>
+<p align="center">Photo M-1 (photo 500 updated)</p>
 <p>point A - azimuth 81.69 (the center of photo 500)<br/>
 point E - azimuth 90 (East)<br/>
-point B - azimuth 106.79 (summit)</p>
+point B - azimuth 106.79 (the summit)</p>
 <p align="center"><a href="crime/froon_kremers/photos/IMG 501_directions.jpg" target="_blank">
 <img src="crime/froon_kremers/photos/IMG 501_directions.jpg" width="600" height="446"  /></a></p>
-<p align="center">Photo M-2</p>
-<p>point A - azimuth 97.07 deg. (the center of photo 501)<br/>
+<p align="center">Photo M-2 (photo 501 updated)</p>
+<p>point A - azimuth 96.74 deg. (the center of photo 501)<br/>
 point E - azimuth 90 deg. (East)<br/>
-point B - azimuth 106.79 deg. (summit)<br/>
-point C - azimuth 124.59 deg. (the center of photo 10)<br/>
-point D - azimuth 127.69 deg. (the left side of photo 499)
+point B - azimuth 106.79 deg. (the summit)<br/>
+point C - azimuth 124.26 deg. (the center of photo 10)<br/>
+point D - azimuth 127.36 deg. (the left side of photo 499)
 </p>
-<p align="center"><a href="crime/froon_kremers/photos/el_pianista_peak_azimuth.jpg" target="_blank">
-<img src="crime/froon_kremers/photos/el_pianista_peak_azimuth.jpg" width="640" height="359"  /></a></p>
-<p align="center">Photo M-3</p>
-<p align="center"><a href="crime/froon_kremers/photos/el_pianista_peak_azimuth_measurement.JPG" target="_blank">
-<img src="crime/froon_kremers/photos/el_pianista_peak_azimuth_measurement.JPG" width="640" height="400"  /></a></p>
-<p align="center">Photo M-4</p>
-<p>The azimuth of the summit = 90 + 16.79 deg. = 106.79 deg.</p>
-<p>The horizontal size of the sensor of the camera h = 6.17 mm<br/>
-focal length f = 4.5 mm<br/>
-Horizontal angle of view = 2 * arctan h/(2*f) = 2 arctan 6.17/(2 * 4.5) = 68.85 deg.</p>
 <p align="center"><a href="crime/froon_kremers/photos/499_center.jpg" target="_blank">
 <img src="crime/froon_kremers/photos/499_center.jpg" width="640" height="480"  /></a></p>
+<p align="center">Photo M-3 (photo 499 updated)</p>
+<p>the azimuth of the center 161.81 deg (photo 499)</p>
+<p><B>The azimuth of the summit visible in photos at the Mirador</B></p>
+<p align="center"><a href="crime/froon_kremers/photos/el_pianista_peak_azimuth.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_peak_azimuth.jpg" width="640" height="359"  /></a></p>
+<p align="center">Photo M-4</p>
+<p align="center"><a href="crime/froon_kremers/photos/el_pianista_peak_azimuth_measurement.JPG" target="_blank">
+<img src="crime/froon_kremers/photos/el_pianista_peak_azimuth_measurement.JPG" width="640" height="400"  /></a></p>
 <p align="center">Photo M-5</p>
-<p>the azimuth of the center 162.14 deg (photo 499)</p>
+<p>The azimuth of the summit = 90 + 16.79 deg. = 106.79 deg.</p>
+<p><B>The horizontal angle of view of Canon PowerShot SX270 HS</B></p>
+<p>The horizontal size of the sensor of the camera h = 6.17 mm<br/>
+The focal length f = 4.5 mm<br/>
+The horizontal angle of view = 2 * atan ( h/(2*f) ) = 2 * atan ( 6.17/(2 * 4.5) ) = 68.85 deg.</p>
+<p><B>Calculations of azimuths in photo 500</B></p>
+<p align="center"><a href="crime/froon_kremers/photos/angle_calculation_model.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/angle_calculation_model.jpg" width="640" height="480"  /></a></p>
+<p align="center">Photo M-6</p>
+<p>AOH = 68.89 / 2 = 34.45 deg. (half the horizontal angle of view of the camera)<br/>
+AB = 280 pixels<br/>
+AH = 410 pixels<br/>
+AOB denotes angle AOB<br/>
+AB / OA = tan(AOB)<br/>
+AH / OA = tan(AOH) = tan(34.45)<br/>
+OA = AH / tan(34.45)<br/>
+tan(AOB) = AB / AH * tan(34.45)<br />
+AOB = atan( 280/410 * tan(34.45) ) = 25.10 deg.<br/>
+<br/>
+AOE = AOB - EOB = 25.1 - 16.79 = 8.31 deg.<br/>
+the azimuth of the center of photo 500 = 90 - 8.31 = 81.69<br/>
+<br/>
+We must know where to place point E.<br/>
+AE / OA = tan(AOE)<br/>
+AH / OA = tan(AOH) = tan(34.45)<br/>
+OA = AH / tan(34.45)<br/>
+AE = AH / tan(34.45) * tan(AOE) = 87 pixels</p>
+<p><B>Calculations of azimuths in photo 501</B></p>
+<p align="center"><a href="crime/froon_kremers/photos/angle_calculation_model.jpg" target="_blank">
+<img src="crime/froon_kremers/photos/angle_calculation_model1.jpg" width="640" height="480"  /></a></p>
+<p align="center">Photo M-7</p>
+<p>AOH = 68.89 / 2 = 34.45 deg. (half the horizontal angle of view of the camera)<br/>
+AH = 503 pixels<br/>
+AB = 130 pixels<br/>
+AOB denotes angle AOB<br/>
+AH / AO = tan(AOH)<br/>
+AO = AH / tan(AOH)<br/>
+AB / AO = tan(AOB)<br/>
+AB = AO * tan(AOB)<br/>
+AB = AH / tan(AOH) * tan(AOB)<br/>
+tan(AOB) = AB / AH * tan(AOH)<br/>
+AOB = atan(130 / 503 * tan(34.45)) = 10.05 deg.<br/>
+<br/>
+EOA = EOB - EOA = 16.79 - 10.05 = 6.74 deg.<br/>
+the azimuth of the center of photo 501 = 90 + 6.74 = 96.74 deg.<br/>
+<br/>
+We must know where to place point E.<br/>
+AE / AO = tan(EOA)<br/>
+AO = AH / tan(AOH)<br/>
+AE = AH / tan(AOH) * tan(EOA) = 503 / tan(34.45) * tan(6.74) = 87 pixels<br/>
+<br/>
+AC = 382 pixels<br/>
+AC / AO = tan(AOC)<br/>
+AO = AH / tan(AOH)<br/>
+AC = AH / tan(AOH) * tan(AOC)<br/>
+tan(AOC) = AC/AH * tan(AOH)<br/>
+AOC = atan(AC/AH * tan(AOH)) = atan(382/503 * tan(34.45)) = 27.52 deg.<br/>
+the azimuth of the center of photo 10 = the azimuth of the center of photo 501 + AOC = <br/>
+96.74 + 27.52 = 124.26 deg.<br/>
+<br/>
+AD = 434 pixels<br/>
+AD / AO = tan(AOD)<br/>
+AO = AH / tan(AOH)<br/>
+AD = AH / tan(AOH) * tan(AOD)<br/>
+tan(AOD) = AD/AH * tan(AOH)<br/>
+AOD = atan(AD/AH * tan(AOH)) = atan(434/503 * tan(34.45)) = 30.62 deg.<br/>
+the azimuth of the left side of photo 499 = the azimuth of the center of photo 501 + AOD =<br/>
+96.74 + 30.62 = 127.36 deg.<br/>
+</p>
+<p><B>Calculations of azimuths in photo 499</B></p>
+<p>the azimuth of the center of photo 499 = the azimuth of the left side of photo 499 + 34.45 =<br/>
+127.36 + 34.45 = 161.81 deg.</p>
 </div>
 <div id="stronaP"></div>
 </body>
