@@ -96,7 +96,7 @@ begin<br/>
 end<br/></p>
 <p>Here is an implementation of the above algorithm: the calculateTimeUsingAzimuthSunriseset method in the following class <a href="https://github.com/AndrzejBystrzycki/SolarAstronomy/tree/master/src/sunastronomy/BasicSolarShadow.java" target="_blank">BasicSolarShadow.java</a>.   <a href="https://github.com/AndrzejBystrzycki/SolarAstronomy" target="_blank">(The whole project.)</a><br/>
 </p>
-<p>Here is an algorithm that determines the time of taking photo 2. The algorithm is based on formula (7). The while loop traverses from HoursForAzimuth to the time of sunrise. The hour in the loop is decreased by 1 second. In each pass of the loop sun's elevation and azimuth are calculated and then the length of the shadow (formula (7)). That hour is chosen at which the difference between the given shadow length and the calculated shadow length is the smallest.</p>
+<p>Here is an algorithm that determines the time of taking photo 2. The algorithm is based on formula (7). The while loop traverses from the time of sunrise to HoursForAzimuth. The hour in the loop is inreased by 1 second. In each pass of the loop sun's elevation and azimuth are calculated and then the length of the shadow (formula (7)). That hour is chosen at which the difference between the given shadow length and the calculated shadow length is the smallest.</p>
 <p>BC - the measured shadow length</p>
 <p>// Calculate the time of sunrise, solar noon (transit), sunset<br/>
 // SPA algorithm is used (implemented in Java by Klaus Brunner)<br/>
@@ -119,7 +119,7 @@ begin<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ElevationFound = elevation<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AzimuthFound = azimuth<br/>
 &nbsp;&nbsp;&nbsp;end<br/>
-&nbsp;&nbsp;&nbsp;hours = hours - 1 sec<br/>
+&nbsp;&nbsp;&nbsp;hours = hours + 1 sec<br/>
 end<br/></p>
 <p>An implementation of the above algorithm: <a href="https://github.com/AndrzejBystrzycki/SolarAstronomy/tree/master/src/shadow/BarrierShadowGeometry.java" target="_blank">BarrierShadowGeometry.java</a>.   <a href="https://github.com/AndrzejBystrzycki/SolarAstronomy" target="_blank"> (The whole project.)</a><br/>
 </p>
